@@ -1,7 +1,7 @@
 r.transition <- function(N, media, sigma){ # choose any f transition dist
   rnorm(N, media, sigma)
 }
-
+#
 d.emission <- function(y, media, sigma){ # choose g(y|x) emission dist
   dnorm(y, media, sigma)
 }
