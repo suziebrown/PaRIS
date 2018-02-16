@@ -11,8 +11,8 @@ GaussDLM <- function(nobs, a, b, sigma.x, sigma.y, x0=0){
 }
 
 # forward transition density for X:
-q <- function(x1,x2){
-  dnorm(a*x1, x2, sigma.x) #first and second arguments swapped to less obvious order for vectorisation
+d.transition <- function(x1,x2){
+  dnorm(x2, a*x1, sigma.x)
 }
 
 # increment for "h1" in paper
