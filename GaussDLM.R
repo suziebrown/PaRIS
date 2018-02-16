@@ -1,5 +1,8 @@
 # generate some observations of Y:
 GaussDLM <- function(nobs, a, b, sigma.x, sigma.y, x0=0){
+  
+  
+  
   X <- numeric(nobs)
   Y <- numeric(nobs)
   X[1] <- rnorm(1,x0, sigma.x)
