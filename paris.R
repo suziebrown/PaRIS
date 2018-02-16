@@ -1,8 +1,11 @@
-# skeleton code for increment of PaRIS algorithm
-# Requires functions: PF, d.transition, htilde
-# d.transition and htilde must be compatible with vectorised first argument.
+## One iteration of PaRIS, going from (ksi(t), omega(t), tau(t)) to (ksi(t+1), omega(t+1), tau(t+1)):
 
-paris.iter <- function(ksi, omega, tau, y, param, Ntilde){
+paris.iter <- function(ksi, omega, tau, yt, param, Ntilde){
+  ## ksi, omega, tau passed in from previous iteration
+  ## yt the most recent observation (scalar)
+  ## param to be passed to PF.iter
+  ## Ntilde number of indices to sample in Paris step (precision parameter)
+  
   # check inputs okay:
   check.dim<-c(length(ksi),length(omega),length(tau))
   if(all(check.dim==check.dim[1])==FALSE) stop("The length of ksi, omega and tau must be the same!")
@@ -11,7 +14,7 @@ paris.iter <- function(ksi, omega, tau, y, param, Ntilde){
   tau_new <- numeric(N)
   
   # standard particle update:
-  PFout <- PF.iter(N, ksi, omega, y, param)
+  PFout <- PF.iter(N, ksi, omega, yt, param)
   ksi_new <- PFout$ksi
   omega_new <- PFout$omega
   
@@ -27,11 +30,15 @@ paris.iter <- function(ksi, omega, tau, y, param, Ntilde){
 }
 
 
-#~~~~~~~~~~~~
-# wrapper for all iterations if using offline
 
+## Wrapper for full PaRIS algorithm when implemented offline:
 
 paris <- function(y, param, N, Ntilde){
+  ## y=(y_1, ..., y_Nobs) vector of observations from a HMM
+  ## param to be passed to PF.iter
+  ## N number of particles
+  ## Ntilde number of indices to sample in Paris step (precision parameter)
+  
   # number of time steps:
   Nobs <- length(y)
   ksi <- matrix(NA, Nobs, N)
