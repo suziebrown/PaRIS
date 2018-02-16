@@ -7,7 +7,7 @@ r.transition <- function(N, mu, sigma){ # choose any transition distribution for
 d.emission <- function(yt, mu, sigma){ # choose emission distribution for y_t|x_t
   # yt=y_t: observation at time t
   # other inputs are parameters of the distribution
-  dnorm(y, mu, sigma)
+  dnorm(yt, mu, sigma)
 }
 
 r.initial_distr <- function(N, mu, sigma){ # choose any initial distribution for x_1
