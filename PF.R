@@ -1,13 +1,13 @@
 r.transition <- function(N, media, sigma){ # choose any f transition dist
-  rnorm(N, media, sigma)
+  rnorm(N, mu, sigma)
 }
 #
 d.emission <- function(y, media, sigma){ # choose g(y|x) emission dist
-  dnorm(y, media, sigma)
+  dnorm(y, mu, sigma)
 }
 
 r.initial_distr <- function(N, media, sigma){ # choose any mu initial dist
-  rnorm(N, media, sigma)
+  rnorm(N, mu, sigma)
 }
 
 PF.smooth <- function(N, y, param){
