@@ -83,3 +83,4 @@ ksi=out1$ksi
 omega=out1$omega
 out2 <- PF.iter(10, ksi, omega, 1, c(1,10,4))
 out2
+
