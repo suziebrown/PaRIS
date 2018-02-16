@@ -8,6 +8,7 @@ paris.iter <- function(ksi, omega, tau, y, param, Ntilde){
   if(all(check.dim==check.dim[1])==FALSE) stop("The length of ksi, omega and tau must be the same!")
   # get number of particles:
   N <- length(ksi)
+  tau_new <- numeric(N)
   
   # standard particle update:
   PFout <- PF.iter(N, ksi, omega, y, param)
