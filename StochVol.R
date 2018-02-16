@@ -13,12 +13,12 @@ StochVol <- function(nobs, phi, sigma.x, beta, x0=0){
 #StochVol(2000,0.975,0.16,0.63)
 
 # forward transition density for X:
-q <- function(x1,x2,sigma.x){
-  dnorm(phi*x1, x2, sigma.x) ###???
+d.transition <- function(x1,x2,sigma.x){
+  dnorm(phi*x1, x2, sigma.x) ###because of symmetry between x and mu in the formula of the normal distribution
 }
 
 # increment for "h1" in paper (section 4.2)
-htilde2 <- function(x, x_new){
+htilde <- function(x, x_new){
   x_new^2
 }
 
