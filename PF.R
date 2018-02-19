@@ -2,7 +2,7 @@ PF.smooth <- function(N, y, par.init, par.trans, par.em){
   # N: number of particles
   # y=(y_1,...,y_T): observations
   # param: parameters for initial/trasition/emission distributions (in "super Gaussian" case c(mean.x, sigma.x, sigma.y))
-  Nobs <- leng th(y)
+  Nobs <- length(y)
   xtilde <- r.init(N, par.init) 
   W1 <- d.em(y[1], xtilde, par.em) 
   W1 <- W1/sum(W1)
