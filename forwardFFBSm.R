@@ -23,23 +23,6 @@ forwardFFBSm.iter<-function(ksi,omega,tau,yt,par.trans,par.em){
   return(list(ksi=ksi_new, omega=omega_new, tau=tau_new))
 }
 
-# forwardFFBSm.old<-function(ksi,omega,tau,y,param){
-#   
-#   check.dim<-c(length(ksi),length(omega),length(tau))
-#   if(all(check.dim==check.dim[1])==FALSE) stop("The length of ksi, omega and tau must be the same!")
-#   
-#   Nobs<-length(y)
-#   smoothing.distrib<-matrix(NA,ncol=length(ksi),nrow=Nobs)
-#   colnames(smoothing.distrib)<-paste("Particle",1:length(ksi))
-#   rownames(smoothing.distrib)<-paste("Time",1:Nobs)
-#   for (i in 1:Nobs){
-#     list(ksi, omega, tau)<-forwardFFBSm.iter(ksi,omega,tau,y[i],param)
-#     smoothing.distrib[i,]<-sum(omega/sum(omega)*tau)
-#   }
-#   return(smoothing.distrib)
-# }
-
-
 
 forwardFFBSm<-function(y, N, par.init, par.trans, par.em){
   #N: number of particles
@@ -71,6 +54,24 @@ forwardFFBSm<-function(y, N, par.init, par.trans, par.em){
   # return:
   list(ksi=ksi, omega=omega, tau=tau, smoothing.distrib=smoothing.distrib)
 }
+
+
+# forwardFFBSm.old<-function(ksi,omega,tau,y,param){
+#   
+#   check.dim<-c(length(ksi),length(omega),length(tau))
+#   if(all(check.dim==check.dim[1])==FALSE) stop("The length of ksi, omega and tau must be the same!")
+#   
+#   Nobs<-length(y)
+#   smoothing.distrib<-matrix(NA,ncol=length(ksi),nrow=Nobs)
+#   colnames(smoothing.distrib)<-paste("Particle",1:length(ksi))
+#   rownames(smoothing.distrib)<-paste("Time",1:Nobs)
+#   for (i in 1:Nobs){
+#     list(ksi, omega, tau)<-forwardFFBSm.iter(ksi,omega,tau,y[i],param)
+#     smoothing.distrib[i,]<-sum(omega/sum(omega)*tau)
+#   }
+#   return(smoothing.distrib)
+# }
+
 
 
 
