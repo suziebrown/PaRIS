@@ -53,7 +53,7 @@ PF.iter <- function(ksi, omega, yt, par.trans, par.em){
   # param: parameters for initial/trasition/emission distributions (in "super Gaussian" case c(mean.x, sigma.x, sigma.y))
   N <- length(ksi)
   index <- sample(1:N, N, replace=TRUE, prob=omega)
-  Xtilde <- r.trans(N, ksi, par.trans)
+  Xtilde <- r.trans(N, ksi[index], par.trans)
   W <- d.em(yt, Xtilde, par.em)
   W <- W/sum(W)
   return(list(ksi=Xtilde, omega=W))
