@@ -1,7 +1,7 @@
 
-N.paris<-25
+N.paris<-60
 Ntilde<-2
-N.FFBSm<-50
+N.FFBSm<-20
 par.init<-c(0,1)
 par.trans<-c(0.7,0.2)
 par.em<-c(1,1)
@@ -10,11 +10,9 @@ par.em<-c(1,1)
 Nobs=500
 y<-obs.sim(Nobs, par.init, par.trans, par.em)
 
-
-
 ## increment for "h1" in paper (sort of)
 htilde <- function(x, x_new){
-  x_new^2
+  rep(x_new^2, length(x))
 }
 
 ###
@@ -48,9 +46,13 @@ distsmooth_y <- KFS(model_y, smoothing="disturbance")
 
 par(mfrow=c(1,2))
 
-#set.ylim1<-range(c(t(h1.FFBSm)/((1:5)*100)),c(t(h1.paris)/((1:5)*100)))*c(1.1,1.1)
-set.ylim1 <- c(0, 0.05)
+#set.ylim1<-range(c(t(h1.FFBSm)/((1:5)*100)),c(t(h1.paris)/((1:5)*100)))*c(0.9,1.1)
+set.ylim1 <- c(0.01, 0.06)
 boxplot(t(t(h1.FFBSm)/((1:5)*100)),xlab="t",ylab=expression(paste("estimate of h1"[t],"/t")),cex.lab=1.2, main="Forward-only FFBSm",ylim=set.ylim1)
 points(cumsum(distsmooth_y$att^2)[(1:5)*100]/((1:5)*100),pch=8,col=4)
 boxplot(t(t(h1.paris)/((1:5)*100)),xlab="t",ylab=expression(paste("estimate of h1"[t],"/t")),cex.lab=1.2, main="PaRIS",ylim=set.ylim1)
 points(cumsum(distsmooth_y$att^2)[(1:5)*100]/((1:5)*100),pch=8,col=4)
+
+#apply(h1.FFBSm,2,median)
+#apply(h1.paris,2,median)
+
