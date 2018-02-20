@@ -8,12 +8,12 @@ par.init<-c(0,1)
 par.trans<-c(0.7,0.2)
 par.em<-c(1,1)
 Nobs <- 50
-n.rep <- 50
+n.rep <- 1
 
 y<-obs.sim(Nobs, par.init, par.trans, par.em)
 
 htilde <- function(x, x_new){
-  x_new
+  rep(x_new, length(x))
 }
 
 var.FFBSm <- matrix(NA,nrow=Nobs-1,ncol=n.rep)
