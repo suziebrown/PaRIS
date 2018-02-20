@@ -108,6 +108,7 @@ system.time(for(j in 1:50){
   }
 })
 
+
 ################### Frappi's h3 with 5001 obs
 h3.FFSBm.5001<-matrix(0,nrow=50,ncol=5)
 colnames(h3.FFSBm.5001)<-c("1000","2000","3000","4000","5000")
