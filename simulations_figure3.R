@@ -8,7 +8,7 @@ par.init<-c(0,1)
 par.trans<-c(0.7,0.2)
 par.em<-c(1,1)
 Nobs <- 50
-n.rep <- 1
+n.rep <- 50
 
 y<-obs.sim(Nobs, par.init, par.trans, par.em)
 
@@ -36,6 +36,6 @@ eff.paris <- var.paris^(-1)*time.paris^(-1)
 Eff.paris <- apply(eff.paris, 1, mean)
 
 par(mfrow=c(1,1))
-plot(Eff.paris, type='l', xlab='t', ylab='efficiency')
-lines(Eff.FFBSm, lty=2)
-legend("topright", c("PaRIS", "FFBSm"), lty=c(1,2))
+plot(Eff.FFBSm, type='l', xlab='t', ylab='efficiency')
+lines(Eff.paris, lty=2)
+legend("topright", c("PaRIS", "FFBSm"), lty=c(2,1))
