@@ -17,7 +17,7 @@ tau <- out$tau
 out2 <- PF.smooth(N.paris, y, par.init, par.trans, par.em)
 ksi <- out2$ksi
 
-par(mfrow=c(3,1))
+par(mfrow=c(1,1))
 
 xlim1 <- c(1,Nobs)
 
@@ -26,12 +26,18 @@ plot(NA,ylim=ylim2, xlim=xlim1, xlab="t", ylab="particles for X(0:t)")
 for (i in 1:Nobs){
   points(rep(i, N.paris), ksi[i,], pch=1, col="purple")
 }
+for (i in 1:N.paris){
+  lines(ksi[,i], col="purple")
+}
 
 #ylim1 <- range(tau)
 ylim1 <- c(-4,4)
 plot(NA, ylim=ylim1, xlim=xlim1, xlab="t", ylab="particles for h(X(0:t))")
 for (i in 1:Nobs){
   points(rep(i, N.paris), tau[i,], pch=1, col="purple")
+}
+for (i in 1:N.paris){
+  lines(tau[,i], col="purple")
 }
 
 
